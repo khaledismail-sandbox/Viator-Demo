@@ -8,7 +8,10 @@
   <link rel="stylesheet" href="style.css">
   <style>
     body { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; }
-    main { flex: 1; width: min(100% - 40px, 720px); margin: 3rem auto; }
+    main { flex: 1; width: min(100% - 40px, 1040px); margin: 3rem auto;
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem; align-content: start; }
+    main h1, #feedback-heading { margin: 0 0 1rem; }
+    @media (max-width: 700px) { main { grid-template-columns: 1fr; } }
     #card-slot { margin-top: 1rem; min-height: 2px; }
     #card-status:empty { display: none; }
   </style>
@@ -17,10 +20,15 @@
 <body>
 <header><div class="bar"><a class="brand" href="index.html#home" aria-label="Viator home"><img src="images/viator.svg" width="100" height="25" alt="Viator"><small>a Tripadvisor company</small></a><a href="index.html#destinations">Discover ﹀</a><div class="nav"><a aria-label="Language and currency" href="https://www.viator.com/">◎</a><a aria-label="Wishlist" href="https://www.viator.com/wishlists">♡</a><a aria-label="Help Center" href="https://www.viator.com/help">ⓘ</a><a aria-label="Rewards" href="https://www.viator.com/rewards">♧</a><a class="login" href="https://www.viator.com/login">Log in</a></div></div></header>
   <main>
-    <h1>Tour feedback</h1>
-    <button type="button" class="btn" id="give-feedback" aria-controls="card-slot">Give feedback</button>
-    <section id="card-slot" aria-label="Feedback"></section>
-    <p id="card-status" role="status"></p>
+    <section>
+      <h1>Tour feedback</h1>
+      <button type="button" class="btn" id="give-feedback" aria-controls="card-slot">Give feedback</button>
+      <section id="card-slot" aria-label="Feedback"></section>
+      <p id="card-status" role="status"></p>
+    </section>
+    <section>
+      <h2 id="feedback-heading">Feedback</h2>
+    </section>
   </main>
   <script>
     const feedbackButton = document.getElementById('give-feedback');
